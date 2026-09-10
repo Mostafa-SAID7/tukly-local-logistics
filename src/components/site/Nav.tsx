@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Bike } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -33,14 +33,18 @@ export function Nav() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {LINKS.map((link) => (
-            <Link
+            <NavLink
               key={link.to}
               to={link.to}
-              activeProps={{ className: "bg-muted text-foreground" }}
-              className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className={({ isActive }) =>
+                cn(
+                  "rounded-full px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-foreground",
+                  isActive ? "bg-muted text-foreground" : "text-muted-foreground",
+                )
+              }
             >
               {t(link.key)}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
