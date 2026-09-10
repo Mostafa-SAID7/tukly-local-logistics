@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader, SiteLayout } from "@/components/site/SiteLayout";
 import {
@@ -8,30 +7,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { DEMO_ZONES } from "@/data/demo";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 
-export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "TUKLY FAQ — zones, pricing and cash on delivery" },
-      {
-        name: "description",
-        content:
-          "Answers about TUKLY coverage areas, delivery fees per kilometre and how cash on delivery is handled.",
-      },
-      { property: "og:title", content: "TUKLY frequently asked questions" },
-      {
-        property: "og:description",
-        content: "Coverage, fees and cash-on-delivery answers for merchants and customers.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: FaqPage,
-});
 
 function FaqPage() {
+
+  usePageMeta("TUKLY FAQ — zones, pricing and cash on delivery", "Answers about TUKLY coverage areas, delivery fees per kilometre and how cash on delivery is handled.");
   const { t, money, lang } = useI18n();
   const activeZones = DEMO_ZONES.filter((z) => z.status === "ACTIVE");
 
@@ -60,3 +42,5 @@ function FaqPage() {
     </SiteLayout>
   );
 }
+
+export default FaqPage;

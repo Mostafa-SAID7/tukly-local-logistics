@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Store } from "lucide-react";
 
 import { Bullet, PageHeader, SiteLayout } from "@/components/site/SiteLayout";
@@ -6,31 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DEMO_MERCHANTS } from "@/data/demo";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 import merchantsImg from "@/assets/merchants.jpg";
 
-export const Route = createFileRoute("/merchants")({
-  head: () => ({
-    meta: [
-      { title: "TUKLY for merchants — send local orders same day" },
-      {
-        name: "description",
-        content:
-          "Shops and restaurants send parcels with TUKLY captains: clear commission, live tracking and cash-on-delivery settlement.",
-      },
-      { property: "og:title", content: "TUKLY for merchants" },
-      {
-        property: "og:description",
-        content: "Clear commission, live tracking and cash-on-delivery settlement for local shops.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: MerchantsPage,
-});
 
 function MerchantsPage() {
+
+  usePageMeta("TUKLY for merchants — send local orders same day", "Shops and restaurants send parcels with TUKLY captains: clear commission, live tracking and cash-on-delivery settlement.");
   const { t, label, lang } = useI18n();
 
   return (
@@ -85,3 +68,5 @@ function MerchantsPage() {
     </SiteLayout>
   );
 }
+
+export default MerchantsPage;

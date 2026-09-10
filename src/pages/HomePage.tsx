@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Bike, PackageCheck, Store } from "lucide-react";
 
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -6,35 +6,17 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DEMO_CAPTAINS, DEMO_MERCHANTS, DEMO_ZONES } from "@/data/demo";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 import heroImg from "@/assets/hero-tuktuk.jpg";
 import merchantsImg from "@/assets/merchants.jpg";
 import captainsImg from "@/assets/captains.jpg";
 import trackingMapImg from "@/assets/tracking-map.jpg";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "TUKLY — Local TukTok delivery for Egyptian merchants" },
-      {
-        name: "description",
-        content:
-          "TUKLY connects Egyptian shops with TukTok captains for fast local delivery, live order tracking and transparent per-zone pricing.",
-      },
-      { property: "og:title", content: "TUKLY — Local TukTok delivery" },
-      {
-        property: "og:description",
-        content:
-          "Fast last-mile delivery in Tanta, Mahalla and Mansoura with live tracking and clear pricing.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
 
 function Index() {
+
+  usePageMeta("TUKLY — Local TukTok delivery for Egyptian merchants", "TUKLY connects Egyptian shops with TukTok captains for fast local delivery, live order tracking and transparent per-zone pricing.");
   const { t } = useI18n();
 
   const activeZones = DEMO_ZONES.filter((z) => z.status === "ACTIVE");
@@ -180,3 +162,5 @@ function Index() {
     </SiteLayout>
   );
 }
+
+export default Index;

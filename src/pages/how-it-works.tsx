@@ -1,32 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Bike, PackageCheck, Store } from "lucide-react";
 
 import { PageHeader, SiteLayout } from "@/components/site/SiteLayout";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 
-export const Route = createFileRoute("/how-it-works")({
-  head: () => ({
-    meta: [
-      { title: "How TUKLY delivery works — pickup, ride, drop-off" },
-      {
-        name: "description",
-        content:
-          "See how a TUKLY delivery runs end to end: merchant pickup, captain assignment and live drop-off tracking.",
-      },
-      { property: "og:title", content: "How TUKLY delivery works" },
-      {
-        property: "og:description",
-        content: "Pickup, captain assignment and live drop-off tracking explained step by step.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: HowItWorksPage,
-});
 
 function HowItWorksPage() {
+
+  usePageMeta("How TUKLY delivery works — pickup, ride, drop-off", "See how a TUKLY delivery runs end to end: merchant pickup, captain assignment and live drop-off tracking.");
   const { t } = useI18n();
 
   const steps = [
@@ -57,3 +39,5 @@ function HowItWorksPage() {
     </SiteLayout>
   );
 }
+
+export default HowItWorksPage;

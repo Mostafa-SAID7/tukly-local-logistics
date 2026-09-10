@@ -1,34 +1,16 @@
-import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHeader, SiteLayout } from "@/components/site/SiteLayout";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { DEMO_ZONES } from "@/data/demo";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 import zoneCityImg from "@/assets/zone-city.jpg";
 
-export const Route = createFileRoute("/zones")({
-  head: () => ({
-    meta: [
-      { title: "TUKLY service zones and delivery pricing" },
-      {
-        name: "description",
-        content:
-          "Coverage and per-zone pricing for TUKLY: Tanta, Mahalla, Mansoura and more, with base fee, per-km fee and working hours.",
-      },
-      { property: "og:title", content: "TUKLY service zones and pricing" },
-      {
-        property: "og:description",
-        content: "Base fee, per-km fee, radius and working hours for every TUKLY zone.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: ZonesPage,
-});
 
 function ZonesPage() {
+
+  usePageMeta("TUKLY service zones and delivery pricing", "Coverage and per-zone pricing for TUKLY: Tanta, Mahalla, Mansoura and more, with base fee, per-km fee and working hours.");
   const { t, label, money, lang } = useI18n();
 
   return (
@@ -70,3 +52,5 @@ function ZonesPage() {
     </SiteLayout>
   );
 }
+
+export default ZonesPage;

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { Clock, MapPin } from "lucide-react";
 
@@ -8,31 +7,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { buildDemoDeliveries } from "@/data/demo";
 import { PROGRESS_STEPS } from "@/lib/delivery-status";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 import trackingMapImg from "@/assets/tracking-map.jpg";
 
-export const Route = createFileRoute("/tracking")({
-  head: () => ({
-    meta: [
-      { title: "Live delivery tracking — TUKLY" },
-      {
-        name: "description",
-        content:
-          "Follow a TUKLY delivery in real time: pickup, captain progress, ETA, distance and the full price breakdown.",
-      },
-      { property: "og:title", content: "Live delivery tracking with TUKLY" },
-      {
-        property: "og:description",
-        content: "Pickup, ETA, distance and price breakdown for every TUKLY delivery.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: TrackingPage,
-});
 
 function TrackingPage() {
+
+  usePageMeta("Live delivery tracking — TUKLY", "Follow a TUKLY delivery in real time: pickup, captain progress, ETA, distance and the full price breakdown.");
   const { t, label, money, lang } = useI18n();
   const deliveries = useMemo(() => buildDemoDeliveries(), []);
   const featured = deliveries.find((d) => d.status === "IN_TRANSIT") ?? deliveries[0];
@@ -101,3 +83,5 @@ function TrackingPage() {
     </SiteLayout>
   );
 }
+
+export default TrackingPage;

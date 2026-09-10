@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Wallet } from "lucide-react";
 
 import { Bullet, PageHeader, SiteLayout } from "@/components/site/SiteLayout";
@@ -6,31 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DEMO_CAPTAINS, DEMO_DAILY_VOLUME } from "@/data/demo";
+import { usePageMeta } from "@/lib/usePageMeta";
 import { useI18n } from "@/lib/i18n";
 import captainsImg from "@/assets/captains.jpg";
 
-export const Route = createFileRoute("/captains")({
-  head: () => ({
-    meta: [
-      { title: "Drive with TUKLY — earnings for TukTok captains" },
-      {
-        name: "description",
-        content:
-          "Captains pick up nearby delivery requests, track daily earnings and keep a transparent acceptance rate with TUKLY.",
-      },
-      { property: "og:title", content: "Drive with TUKLY" },
-      {
-        property: "og:description",
-        content: "Nearby requests, daily earnings and transparent rates for TukTok captains.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: CaptainsPage,
-});
 
 function CaptainsPage() {
+
+  usePageMeta("Drive with TUKLY — earnings for TukTok captains", "Captains pick up nearby delivery requests, track daily earnings and keep a transparent acceptance rate with TUKLY.");
   const { t, label, money, lang } = useI18n();
   const busiestDay = DEMO_DAILY_VOLUME.reduce((a, b) => (b.deliveries > a.deliveries ? b : a));
 
@@ -95,3 +78,5 @@ function CaptainsPage() {
     </SiteLayout>
   );
 }
+
+export default CaptainsPage;
