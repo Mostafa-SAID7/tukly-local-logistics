@@ -3,22 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0A0A0A" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <title>Lumina Beauty — Luxury Natural Skincare & Clean Beauty</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>TUKLY — Local TukTok delivery for Egyptian merchants</title>
     <meta
       name="description"
-      content="Luxury natural skincare crafted with botanical actives. Cruelty-free, dermatologist-tested formulas for radiant skin in 14 days."
+      content="TUKLY connects Egyptian shops with TukTok captains for fast local delivery, live order tracking and transparent per-zone pricing."
     />
-    <meta name="author" content="Lumina Beauty" />
-
-    <meta property="og:title" content="Lumina Beauty — Luxury Natural Skincare" />
+    <meta property="og:title" content="TUKLY — Local TukTok delivery" />
     <meta
       property="og:description"
-      content="Cruelty-free, dermatologist-tested botanical formulas for radiant, glowing skin."
+      content="Fast local delivery, live tracking and transparent per-zone pricing for Egyptian merchants."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        var d = t ? t === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", d);
+      } catch (e) {}
+    </script>
   </head>
 
   <body>
